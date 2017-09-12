@@ -1,0 +1,30 @@
+1504837496479	Rename type 'CarDAO'
+1504838108987	Delete element
+1504839866343	Rename type 'AutoCtrlIimpl'
+1504845880077	Rename compilation unit 'MotoVO.java'
+1504846256715	Rename method 'getAllAutos'
+1504850192713	Rename method 'getAutos'
+1504850383458	Copy compilation unit
+1504850489498	Delete element
+1504850502477	Copy compilation unit
+1504897348695	Rename local variable 'autoDTO'
+1504898596370	Copy compilation unit
+1504898603795	Copy compilation unit
+1504898626610	Rename type 'AñoDTO'
+1504898651164	Rename type 'MesDTO'
+1504898707077	Delete element
+1505067592561	Encapsulate field 'title'
+1505067659788	Encapsulate field 'title'
+1505070588880	Encapsulate field 'id'
+1505070592041	Encapsulate field 'name'
+1505071213854	Copy compilation unit
+1505071229915	Rename type 'DiaDTO'
+1505071906931	Copy compilation unit
+1505071947694	Copy compilation unit
+1505073317416	Encapsulate field 'image'
+1505073380484	Encapsulate field 'image'
+1505074083137	Encapsulate field 'image'
+1505074152628	Encapsulate field 'image'
+1505074634687	Rename method 'getYearStadistics'
+1505074644845	Rename method 'getMonthStadistics'
+1505074655763	Rename method 'getStadistics'

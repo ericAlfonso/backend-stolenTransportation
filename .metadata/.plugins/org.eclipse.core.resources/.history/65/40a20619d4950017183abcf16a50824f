@@ -1,0 +1,10 @@
+package com.iwa.stolencar.persistence;
+
+import org.springframework.stereotype.Repository;
+
+import com.iwa.stolencar.persistence.entities.Auto;
+
+@Repository
+public class AutoDAOImpl extends AbstractDAO<Auto> implements AutoDAO{
+
+}

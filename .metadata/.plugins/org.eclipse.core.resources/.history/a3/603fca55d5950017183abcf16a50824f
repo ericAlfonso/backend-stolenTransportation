@@ -1,0 +1,18 @@
+package com.iwa.stolencar.persistence;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.iwa.stolencar.persistence.entities.Moto;
+
+@Repository
+public class MotoDAOImpl extends AbstractDAO<Moto> implements MotoDAO{
+
+	@Override
+	public List<Moto> getTopMotorcycles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

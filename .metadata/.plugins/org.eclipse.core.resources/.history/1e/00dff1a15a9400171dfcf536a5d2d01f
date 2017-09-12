@@ -1,0 +1,8 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController("/motorcycles")
+public class MotoCtrlImpl {
+
+}

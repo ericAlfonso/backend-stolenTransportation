@@ -1,0 +1,5 @@
+package com.iwa.stolencar.services;
+
+public class MotoServiceImpl {
+
+}

@@ -1,0 +1,18 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@RequestMapping("/cars")
+@SuppressWarnings("rawtypes")
+public class AutoCtrlImpl implements AutoCtrl{
+
+	@Override
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity getAutos() {
+		
+		return null;
+	}
+
+}

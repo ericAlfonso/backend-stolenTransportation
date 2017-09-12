@@ -1,0 +1,63 @@
+package com.iwa.stolencar.rest.parser.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.rest.parser.EstadisticasParser;
+import com.iwa.stolencar.rest.vo.AñoVO;
+import com.iwa.stolencar.rest.vo.MesVO;
+
+@Component
+public class EstadisticasParserImpl implements EstadisticasParser{
+
+	@Override
+	public List<AñoVO> parseToAñoVOList(List<AñoDTO> añoDTOs) {
+		List<AñoVO> añoVOs = new ArrayList<>();
+		if(añoDTOs == null)
+			return añoVOs;
+		
+		for(AñoDTO añoDTO: añoDTOs) {
+			añoVOs.add(this.parserToAñoVO(añoDTO));
+		}
+		
+		return añoVOs;
+	}
+
+	@Override
+	public AñoVO parserToAñoVO(AñoDTO añoDTO) {
+		if(añoDTO == null)
+			return null;
+		
+		AñoVO añoVO = new AñoVO();
+		añoVO.setId(añoDTO.getId());
+		añoVO.setValue(añoDTO.getValue());
+		añoVO.setCarAmount(añoDTO.getCarAmount());
+		añoVO.setMotorcycleAmount(añoDTO.getMotorcycleAmount());
+		
+		return añoVO;
+	}
+
+	@Override
+	public List<MesVO> parseToMesDTOList(List<MesDTO> mesDTOs) {
+		List<MesVO> mesVOs = new ArrayList<>();
+		if(mesDTOs == null)
+			return mesVOs;
+		
+		for(MesDTO dto : mesDTOs) {
+			mesVOs.add(this.parseToMesVO(dto));
+		}
+		
+		return mesVOs;
+	}
+
+	@Override
+	public MesVO parseToMesVO(MesDTO mesDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

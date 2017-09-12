@@ -1,0 +1,128 @@
+package com.iwa.stolencar.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.DiaDTO;
+import com.iwa.stolencar.commos.dto.EstadisticaDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.persistence.AñoDAO;
+import com.iwa.stolencar.persistence.DiaDAO;
+import com.iwa.stolencar.persistence.EstadisticaDAO;
+import com.iwa.stolencar.persistence.MesDAO;
+import com.iwa.stolencar.persistence.entities.Año;
+import com.iwa.stolencar.persistence.entities.Dia;
+import com.iwa.stolencar.persistence.entities.Estadistica;
+import com.iwa.stolencar.persistence.entities.Mes;
+
+@Service
+@Transactional
+public class EstadisticasServiceImpl implements EstadisticasService {
+
+	private static final Logger logger = Logger.getLogger(EstadisticasService.class);
+
+	@Autowired
+	private AñoDAO añoDAO;
+	@Autowired
+	private MesDAO mesDAO;
+	@Autowired
+	private DiaDAO diaDAO;
+	@Autowired
+	private EstadisticaDAO estadisticaDAO;
+
+	@Override
+	public List<AñoDTO> getYearStatistics() {
+		logger.info("SERVICE: getYearStatistics method");
+
+		List<AñoDTO> añoDTOs = new ArrayList<>();
+		List<Año> años = this.añoDAO.getAll();
+
+		if (logger.isTraceEnabled())
+			logger.trace("Years list : " + años);
+
+		años.stream().forEach(año -> {
+			AñoDTO añoDTO = new AñoDTO();
+			añoDTO.setId(año.getId());
+			añoDTO.setValue(año.getValue());
+			añoDTO.setCarAmount(año.getCarAmount());
+			añoDTO.setMotorcycleAmount(año.getMotorcycleAmount());
+
+			añoDTOs.add(añoDTO);
+		});
+
+		return añoDTOs;
+	}
+
+	@Override
+	public List<MesDTO> getMonthStatistics() {
+		logger.info("SERVICE: getMonthStatistics method");
+
+		List<MesDTO> mesDTOs = new ArrayList<>();
+		List<Mes> list = this.mesDAO.getAll();
+
+		if (logger.isTraceEnabled())
+			logger.trace("Years list : " + list);
+
+		list.stream().forEach(mes -> {
+			MesDTO mesDTO = new MesDTO();
+			mesDTO.setId(mes.getId());
+			mesDTO.setName(mes.getName());
+			mesDTO.setCarAmount(mes.getCarAmount());
+			mesDTO.setMotorcycleAmount(mes.getMotorcycleAmount());
+
+			mesDTOs.add(mesDTO);
+		});
+
+		return mesDTOs;
+	}
+
+	@Override
+	public List<EstadisticaDTO> getStatistics() {
+		logger.info("SERVICE: getStadistics method");
+
+		List<EstadisticaDTO> list = new ArrayList<>();
+		List<Estadistica> estadisticas = this.estadisticaDAO.getAll();
+
+		if (logger.isTraceEnabled())
+			logger.trace("Stadistics list : " + estadisticas);
+
+		estadisticas.stream().forEach(estadistica -> {
+			EstadisticaDTO dto = new EstadisticaDTO();
+			dto.setId(estadistica.getId());
+			dto.setName(estadistica.getName());
+			list.add(dto);
+		});
+
+		return list;
+	}
+
+	@Override
+	public List<DiaDTO> getDayStatistics() {
+		logger.info("SERVICE: getDayStatistics method");
+
+		List<DiaDTO> diaDTOs = new ArrayList<>();
+		List<Dia> list = this.diaDAO.getAll();
+
+		if (logger.isTraceEnabled())
+			logger.trace("Days list : " + list);
+
+		list.stream().forEach(mes -> {
+			MesDTO mesDTO = new MesDTO();
+			mesDTO.setId(mes.getId());
+			mesDTO.setName(mes.getName());
+			mesDTO.setCarAmount(mes.getCarAmount());
+			mesDTO.setMotorcycleAmount(mes.getMotorcycleAmount());
+
+			mesDTOs.add(mesDTO);
+		});
+
+		return mesDTOs;
+	}
+}

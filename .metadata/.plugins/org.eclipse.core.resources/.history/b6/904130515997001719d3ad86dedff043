@@ -1,0 +1,19 @@
+package com.iwa.stolencar.persistence;
+
+import java.util.List;
+
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
+
+import com.iwa.stolencar.persistence.entities.Año;
+
+@Repository
+public class AñoDAOImpl extends AbstractDAO<Año> implements AñoDAO{
+
+	@Override
+	public List<Año> getYearStatistics(Integer from, Integer to) {
+		return (List<Año>) getSession().createCriteria(Año.class, "año")
+				.add(Restrictions.between("año.id", from, to));
+	}
+
+}

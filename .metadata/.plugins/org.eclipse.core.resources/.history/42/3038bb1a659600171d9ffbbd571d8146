@@ -1,0 +1,11 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+
+@SuppressWarnings("rawtypes")
+public interface EstadisticasCtrl {
+
+	ResponseEntity getYearStatistics(Integer stadisticId, String transportName);
+	ResponseEntity getMonthStatistics(Integer stadisticId, String transportName);
+	ResponseEntity getStatistics();
+}

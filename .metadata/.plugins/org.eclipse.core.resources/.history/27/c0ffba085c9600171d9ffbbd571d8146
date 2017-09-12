@@ -1,0 +1,7 @@
+package com.iwa.stolencar.commos.dto;
+
+public class DiaDTO {
+
+	private Integer id;
+	private String name;
+}

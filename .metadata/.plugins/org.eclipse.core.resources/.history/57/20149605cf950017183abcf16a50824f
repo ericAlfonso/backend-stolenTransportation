@@ -1,0 +1,81 @@
+package com.iwa.stolencar.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.persistence.AñoDAO;
+import com.iwa.stolencar.persistence.MesDAO;
+import com.iwa.stolencar.persistence.entities.Año;
+import com.iwa.stolencar.persistence.entities.Mes;
+
+@Service
+@Transactional
+public class EstadisticasServiceImpl implements EstadisticasService{
+	
+	private static final Logger logger = Logger.getLogger(EstadisticasService.class);
+	
+	@Autowired private AñoDAO añoDAO;
+	@Autowired private MesDAO mesDAO;
+
+	@Override
+	public List<AñoDTO> getYearStadistics(String transportName) {
+		logger.info("SERVICE: getYearStadistics method");
+		
+		if(logger.isDebugEnabled())
+			logger.debug(" - transport name: " + transportName);
+		
+		List<AñoDTO> añoDTOs = new ArrayList<>();
+		List<Año> años =  this.añoDAO.getAll();
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Years list : " + años);
+		
+		años.stream().forEach(año -> {
+			AñoDTO añoDTO = new AñoDTO();
+			añoDTO.setId(año.getId());
+			añoDTO.setValue(año.getValue());
+			añoDTO.setCarAmount(año.getCarAmount());
+			añoDTO.setMotorcycleAmount(año.getMotorcycleAmount());
+			
+			añoDTOs.add(añoDTO);
+		});
+		
+		return añoDTOs;
+	}
+
+	@Override
+	public List<MesDTO> getMonthStadistics(String transportName) {
+logger.info("SERVICE: getMonthStadistics method");
+		
+		if(logger.isDebugEnabled())
+			logger.debug(" - transport name: " + transportName);
+		
+		List<MesDTO> mesDTOs = new ArrayList<>();
+		List<Mes> list = this.mesDAO.getAll();
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Years list : " + list);
+		
+		list.stream().forEach(mes -> {
+			MesDTO mesDTO = new MesDTO();
+			mesDTO.setId(mes.getId());
+			mesDTO.setName(mes.getName());
+			mesDTO.setCarAmount(mes.getCarAmount());
+			mesDTO.setMotorcycleAmount(mes.getMotorcycleAmount());
+			
+			mesDTOs.add(mesDTO);
+		});
+		
+		logger.info(añoDTOs.stream());
+		return añoDTOs;
+	}
+
+}

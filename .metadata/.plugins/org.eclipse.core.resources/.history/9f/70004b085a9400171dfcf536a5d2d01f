@@ -1,0 +1,44 @@
+package com.iwa.stolencar.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.AutoService;
+import com.iwa.stolencar.commos.MotoService;
+import com.iwa.stolencar.commos.dto.AutoDTO;
+import com.iwa.stolencar.commos.dto.MotoDTO;
+import com.iwa.stolencar.persistence.MotoDAO;
+import com.iwa.stolencar.persistence.entities.Auto;
+
+@Service
+@Transactional
+public class MotoServiceImpl implements MotoService{
+	
+	public static final Logger logger = Logger.getLogger(MotoService.class);
+	
+	@Autowired private MotoDAO motoDAO;
+
+	@Override
+	@Transactional(readOnly = true) 
+	public List<MotoDTO> getAllMotorcycles() {
+		logger.info("SERVICE: getAllCars method");
+		List<MotoDTO> dtos = new ArrayList<>();
+		List<Auto> autos = this.autoDAO.getAll();
+		
+		autos.stream().forEach(auto -> {
+			MotoDTO motoDTO = new MotoDTO();
+			motoDTO.setId(auto.getId());
+			motoDTO.setMark(auto.getMark());
+			dtos.add(motoDTO);
+		});
+		
+		logger.debug("Ending getAllCars service");
+		return dtos;
+	}
+
+}

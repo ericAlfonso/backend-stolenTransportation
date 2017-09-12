@@ -1,0 +1,19 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/motorcycles")
+public class MotoCtrlImpl implements MotoCtrl{
+
+	@Override
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity getMotorcycles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

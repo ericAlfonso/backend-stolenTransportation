@@ -1,0 +1,11 @@
+package com.iwa.stolencar.commos;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.AutoDTO;
+
+public interface AutoService {
+
+	List<AutoDTO> getAllCars();
+	AutoDTO getCarDetails();
+}

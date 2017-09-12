@@ -1,0 +1,7 @@
+package com.iwa.stolencar.services;
+
+import com.iwa.stolencar.commos.AutoService;
+
+public class AutoServiceImpl implements AutoService{
+
+}

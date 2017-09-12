@@ -1,0 +1,67 @@
+package com.iwa.stolencar.rest;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.rest.parser.EstadisticasParser;
+import com.iwa.stolencar.rest.vo.AñoVO;
+import com.iwa.stolencar.rest.vo.MesVO;
+
+@RestController
+@RequestMapping("/stadistics")
+@SuppressWarnings("rawtypes")
+public class EstadisticasCtrlImpl implements EstadisticasCtrl {
+
+	private static final Logger logger = Logger.getLogger(EstadisticasCtrl.class);
+
+	@Autowired
+	private EstadisticasService estadisticasService;
+	@Autowired
+	private EstadisticasParser estadisticasParser;
+
+	@Override
+	@RequestMapping("/{stadisticId}/year")
+	public ResponseEntity getYearStadistics(@PathVariable(name = "stadisticId") Integer stadisticId,
+			@RequestParam(name = "transportName") String transportName) {
+		logger.info("CTRL: getYearStadistics method");
+
+		List<AñoDTO> añoDTOs = 
+				this.estadisticasService.getYearStadistics(transportName);
+		List<AñoVO> añoVOs = 
+				this.estadisticasParser.parseToAñoVOList(añoDTOs);
+
+		if (logger.isTraceEnabled())
+			logger.trace("Year stadistics: " + añoVOs);
+
+		return new ResponseEntity<>(añoVOs, HttpStatus.OK);
+	}
+
+	@Override
+	@RequestMapping("/{stadisticId}/month")
+	public ResponseEntity getMonthStadistics(@PathVariable(name = "stadisticId") Integer stadisticId,
+			@RequestParam(name = "transportName") String transportName) {
+		logger.info("CTRL: getMonthStadistics method");
+
+		List<MesDTO> mesDTOs = 
+				this.estadisticasService.getMonthStadistics(transportName);
+		List<MesVO> mesVOs = 
+				this.estadisticasParser.parseToMesDTOList(mesDTOs);
+
+		if (logger.isTraceEnabled())
+			logger.trace("Year stadistics: " + añoVOs);
+
+		return new ResponseEntity<>(añoVOs, HttpStatus.OK);
+	}
+
+}

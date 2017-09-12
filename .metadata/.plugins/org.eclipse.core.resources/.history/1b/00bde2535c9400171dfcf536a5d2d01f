@@ -1,0 +1,49 @@
+package com.iwa.stolencar.rest;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iwa.stolencar.commos.MotoService;
+import com.iwa.stolencar.commos.MotoService;
+import com.iwa.stolencar.commos.dto.AutoDTO;
+import com.iwa.stolencar.commos.dto.MotoDTO;
+import com.iwa.stolencar.rest.parser.MotoParser;
+import com.iwa.stolencar.rest.parser.MotoParser;
+import com.iwa.stolencar.rest.vo.AutoVO;
+import com.iwa.stolencar.rest.vo.MotoVO;
+
+@RestController
+@RequestMapping("/motorcycles")
+public class MotoCtrlImpl implements MotoCtrl{
+	
+private static final Logger logger = Logger.getLogger(AutoCtrl.class);
+	
+	@Autowired private MotoService motoService;
+	@Autowired private MotoParser motoParser;
+
+	@Override
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity getMotorcycles() {
+		logger.info("CTRL: getCars method");
+		
+		List<MotoDTO> motoDTOs = 
+					this.motoService.getAllMotorcycles()
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Autos List " + autoDTOs.toString());
+		
+		List<MotoVO> motoVOs = 
+				this.motoParser.parseToMotoVOList(motoDTOs);
+	
+		logger.debug("Ending getCars method");		
+		return new ResponseEntity<>(autoVOs, HttpStatus.OK);
+	}
+
+}

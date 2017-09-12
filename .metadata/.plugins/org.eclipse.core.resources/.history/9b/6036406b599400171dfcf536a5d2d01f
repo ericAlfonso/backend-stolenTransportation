@@ -1,0 +1,6 @@
+package com.iwa.stolencar.commos;
+
+public interface MotoService {
+
+	List<MotoDTO> getAllMotorcycles();
+}

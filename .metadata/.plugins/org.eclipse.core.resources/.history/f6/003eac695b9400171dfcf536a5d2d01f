@@ -1,0 +1,42 @@
+package com.iwa.stolencar.rest.parser.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import com.iwa.stolencar.commos.dto.AutoDTO;
+import com.iwa.stolencar.commos.dto.MotoDTO;
+import com.iwa.stolencar.rest.parser.AutoParser;
+import com.iwa.stolencar.rest.vo.AutoVO;
+import com.iwa.stolencar.rest.vo.MotoVO;
+
+@Component
+public class MotoParserImpl implements AutoParser{
+
+	@Override
+	public List<MotoVO> parseToAutoVOList(List<MotoDTO> motoDTOs) {
+		List<MotoVO> vos = new ArrayList<>();
+		if(motoDTOs == null)
+			return null;
+		
+		for(MotoDTO motoDTO: motoDTOs) {
+			vos.add(this.parseToAutoVO(motoDTO));
+		}
+		
+		return vos;
+	}
+
+	@Override
+	public AutoVO parseToAutoVO(AutoDTO autoDTO) {
+		if(autoDTO == null)
+			return null;
+		
+		AutoVO autoVO = new AutoVO();
+		autoVO.setId(autoDTO.getId());
+		autoVO.setMark(autoDTO.getMark());
+		
+		return autoVO;
+	}
+
+}

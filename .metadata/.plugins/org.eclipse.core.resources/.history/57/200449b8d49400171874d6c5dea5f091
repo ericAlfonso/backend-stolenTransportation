@@ -1,0 +1,8 @@
+package com.iwa.stolencar.services.test;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@Rollback(true)
+@Transactional
+public class EsdisticasServiceTest {
+
+}

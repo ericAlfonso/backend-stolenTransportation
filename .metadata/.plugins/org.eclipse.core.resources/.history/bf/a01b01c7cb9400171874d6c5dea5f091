@@ -1,0 +1,11 @@
+package com.iwa.stolencar.rest.parser;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.rest.vo.AñoVO;
+
+import scala.annotation.meta.param;
+
+public interface EstadisticasParser {
+
+	AñoVO parserToAñoVO(AñoDTO añoDTO);
+}

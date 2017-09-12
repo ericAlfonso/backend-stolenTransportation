@@ -1,0 +1,87 @@
+package com.iwa.stolencar.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.persistence.AñoDAO;
+import com.iwa.stolencar.persistence.entities.Año;
+
+@Service
+@Transactional
+public class EstadisticasServiceImpl implements EstadisticasService{
+	
+	private static final Logger logger = Logger.getLogger(EstadisticasService.class);
+	
+	@Autowired private AñoDAO añoDAO;
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<AñoDTO> getYearStadistics(String transportName) {
+		logger.info("SERVICE: getYearStadistics method");
+		
+		if(logger.isDebugEnabled())
+			logger.debug(" - transport name: " + transportName);
+		
+		List<AñoDTO> añoDTOs = new ArrayList<>();
+		List<Año> años =  this.añoDAO.getAll();
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Years list : " + años);
+		
+		años.stream().forEach(año -> {
+			AñoDTO añoDTO = new AñoDTO();
+			añoDTO.setId(año.getId());
+			añoDTO.setValue(año.getValue());
+			añoDTO.setCarAmount(año.getCarAmount());
+			añoDTO.setMotorcycleAmount(año.getMotorcycleAmount());
+			
+			añoDTOs.add(añoDTO);
+		});
+		
+		logger.info(añoDTOs.stream());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, String> map = mapper.convertValue(añoDTOs.stream(), Map.class);
+		
+		logger.info("hha");
+		
+		if(logger.isTraceEnabled()) {
+			logger.trace("Address map --- "  + map);
+			logger.trace("Address keys " + map.keySet());	
+		}
+
+		logger.info("Address map --- "  + map);
+		logger.info("Address keys " + map.keySet());	
+		
+//		map.keySet().stream()
+//		.forEach(key -> {
+//			PatientAddressComponentPK pk = new PatientAddressComponentPK();
+//			pk.setAddressId(addressId);
+//			CatEnumAddressComp component = CatEnumAddressComp.parseFromName(key);
+//			logger.debug("Component from Enum ---- " + component);
+//			pk.setComponentId(component.getType());
+//			
+//			PatientAddressComponent paAddressComponent = new PatientAddressComponent();
+//			paAddressComponent.setPk(pk);
+//			paAddressComponent.setPatientAddres(patientAddress);
+//			String value = map.get(key);
+//			logger.debug("Value for component --- " + value);
+//			paAddressComponent.setValue(value);
+//			
+//			this.patientAddressComponentDAO.create(paAddressComponent);
+//			addressComponents.add(paAddressComponent);
+//		});
+		
+		return null;
+	}
+
+}

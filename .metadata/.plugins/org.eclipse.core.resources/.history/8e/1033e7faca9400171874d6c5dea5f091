@@ -1,0 +1,14 @@
+package com.iwa.stolencar.commos.dto;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class AñoDTO {
+
+	private Integer id;
+	private String value;
+	private Integer motorcycleAmount;
+	private Integer carAmount;
+}

@@ -1,0 +1,7 @@
+package com.iwa.stolencar.rest.vo;
+
+public class CardVO {
+
+	private String mark;
+	private String title;
+}

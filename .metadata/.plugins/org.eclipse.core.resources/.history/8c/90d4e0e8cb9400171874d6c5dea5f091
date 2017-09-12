@@ -1,0 +1,19 @@
+package com.iwa.stolencar.rest.parser;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.rest.vo.AñoVO;
+import com.iwa.stolencar.rest.vo.MesVO;
+
+import scala.annotation.meta.param;
+
+public interface EstadisticasParser {
+
+	List<AñoVO> parseToAñoVOList(List<AñoDTO> añoDTOs);
+	AñoVO parserToAñoVO(AñoDTO añoDTO);
+	
+	List<MesVO> parseToMesDTOList(List<MesDTO> mesDTOs);
+	MesVO parseToMesVO(MesVO mesVO);
+}

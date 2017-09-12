@@ -1,0 +1,19 @@
+1505138183171	Copy compilation units
+1505139222334	Encapsulate field 'carAmount'
+1505139226172	Encapsulate field 'motorcycleAmount'
+1505142460574	Copy compilation unit
+1505142492153	Copy compilation unit
+1505142513982	Rename type 'CardVO'
+1505142569932	Copy compilation unit
+1505142795971	Copy compilation unit
+1505143115611	Copy compilation unit
+1505143135049	Copy compilation unit
+1505143163441	Delete elements
+1505143497678	Delete elements
+1505143508717	Delete element
+1505143519130	Delete element
+1505143525830	Delete element
+1505143537160	Delete element
+1505143542544	Delete element
+1505143960829	Rename method 'updateTrasnportationCard'
+1505143986302	Rename method 'updateTranSportationCard'

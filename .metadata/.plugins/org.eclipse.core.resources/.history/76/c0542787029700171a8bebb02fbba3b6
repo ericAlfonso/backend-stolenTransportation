@@ -1,0 +1,21 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iwa.stolencar.rest.vo.CardVO;
+
+@RestController
+@RequestMapping("/card")
+public class CardCtrlImpl implements CardCtrl{
+
+	@Override
+	@RequestMapping(value = "/{id}")
+	public ResponseEntity updateTrasnportationCard(CardVO cardVO, Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+}

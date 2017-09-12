@@ -1,0 +1,91 @@
+package com.iwa.stolencar.rest;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iwa.stolencar.commos.AutoService;
+import com.iwa.stolencar.commos.dto.AutoDTO;
+import com.iwa.stolencar.commos.exception.NotFoundException;
+import com.iwa.stolencar.rest.parser.AutoParser;
+import com.iwa.stolencar.rest.vo.AutoVO;
+
+@RestController
+@RequestMapping("/cars")
+@SuppressWarnings("rawtypes")
+public class AutoCtrlImpl implements AutoCtrl{
+	
+	private static final Logger logger = Logger.getLogger(AutoCtrl.class);
+	
+	@Autowired private AutoService autoService;
+	@Autowired private AutoParser autoParser;
+
+	@Override
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity getCars() {
+		logger.info("CTRL: getCars method");
+		
+		List<AutoDTO> autoDTOs = 
+					this.autoService.getAllCars();
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Autos List " + autoDTOs.toString());
+		
+		List<AutoVO> autoVOs = 
+				this.autoParser.parseToAutoVOList(autoDTOs);
+	
+		logger.debug("Ending getCars method");		
+		return new ResponseEntity<>(autoVOs, HttpStatus.OK);
+	}
+
+	@Override
+	@RequestMapping(value = "/{carId}", method = RequestMethod.GET)
+	public ResponseEntity getCarDetails(
+			@PathVariable(name = "carId") Integer carId) {
+		logger.info("CTRL: getCarDetails method");
+		
+		if(carId != null) {
+			try {
+				AutoDTO autoDTO = this.autoService.getCarDetails(carId);
+				AutoVO autoVO = 
+					this.autoParser.parseToAutoVO(autoDTO);
+				
+				if(logger.isTraceEnabled())
+					logger.trace("AutoVO : " + autoVO);
+				
+				logger.debug("Ending getCarDetails method");
+				return new ResponseEntity<>(autoVO, HttpStatus.OK);
+				
+			} catch (NotFoundException e) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+		
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+
+	@Override
+	@RequestMapping(value = "/top", method = RequestMethod.GET)
+	public ResponseEntity getTopCars() {
+		logger.info("CTRL: getTopCars method");
+		
+		List<AutoDTO> autoDTOs = 
+					this.autoService.getAllCars();
+		
+		if(logger.isTraceEnabled())
+			logger.trace("Autos List " + autoDTOs.toString());
+		
+		List<AutoVO> autoVOs = 
+				this.autoParser.parseToAutoVOList(autoDTOs);
+	
+		logger.debug("Ending getCars method");		
+		return new ResponseEntity<>(autoVOs, HttpStatus.OK);
+	}
+}

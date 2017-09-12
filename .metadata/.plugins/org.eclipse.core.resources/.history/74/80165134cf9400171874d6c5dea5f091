@@ -1,0 +1,13 @@
+package com.iwa.stolencar.persistence.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+public class Estadistica {
+
+	@Id
+	@Column(name = "ID")
+	private Integer id;
+	@Column(name = "NAME", nullable = false)
+	private String name;
+}

@@ -1,0 +1,13 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+
+import com.iwa.stolencar.rest.vo.CardVO;
+
+@SuppressWarnings("rawtypes")
+public interface CardCtrl {
+	
+	ResponseEntity updateTransportationCard(Integer id, CardVO cardVO, BindingResult bindingResult);
+	ResponseEntity deleteTransportationCard(Integer id, CardVO cardVO);
+}

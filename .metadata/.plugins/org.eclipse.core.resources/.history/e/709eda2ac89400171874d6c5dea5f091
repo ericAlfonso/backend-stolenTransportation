@@ -1,0 +1,11 @@
+package com.iwa.stolencar.commos;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.MotoDTO;
+
+public interface MotoService {
+
+	List<MotoDTO> getAllMotorcycles();
+	MotoDTO getMotorcycleDeatails(Integer motorcycleId);
+}

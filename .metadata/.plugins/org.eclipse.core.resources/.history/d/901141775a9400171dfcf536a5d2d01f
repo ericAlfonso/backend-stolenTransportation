@@ -1,0 +1,9 @@
+package com.iwa.stolencar.rest;
+
+import org.springframework.http.ResponseEntity;
+
+@SuppressWarnings("rawtypes")
+public interface AutoCtrl {
+	
+	ResponseEntity getAutos();
+}

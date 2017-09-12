@@ -1,0 +1,27 @@
+package com.iwa.stolencar.rest;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.iwa.stolencar.commos.AutoService;
+
+@RequestMapping("/cars")
+@SuppressWarnings("rawtypes")
+public class AutoCtrlImpl implements AutoCtrl{
+	
+	private static final Logger logger = Logger.getLogger(AutoCtrl.class);
+	
+	@Autowired private AutoService autoService;
+
+	@Override
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity getAutos() {
+		
+		
+		return null;
+	}
+
+}

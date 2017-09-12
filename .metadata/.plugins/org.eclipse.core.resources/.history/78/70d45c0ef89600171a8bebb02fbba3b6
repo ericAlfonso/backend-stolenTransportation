@@ -1,0 +1,14 @@
+package com.iwa.stolencar.commos;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.EstadisticaDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+
+public interface EstadisticasService {
+
+	List<AñoDTO> getYearStatistics();
+	List<MesDTO> getMonthStatistics();
+	List<EstadisticaDTO> getStatistics();
+}

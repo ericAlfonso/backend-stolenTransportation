@@ -1,0 +1,20 @@
+package com.iwa.stolencar.services;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.AutoService;
+import com.iwa.stolencar.persistence.entities.Auto;
+
+@Service
+@Transactional
+public class AutoServiceImpl implements AutoService{
+
+	@Override
+	public List<Auto> getAllAutos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

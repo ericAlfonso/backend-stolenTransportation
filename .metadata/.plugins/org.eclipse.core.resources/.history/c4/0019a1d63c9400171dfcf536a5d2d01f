@@ -1,0 +1,5 @@
+package com.iwa.stolencar.persistence;
+
+public interface CarDAO {
+
+}

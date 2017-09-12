@@ -1,0 +1,23 @@
+package com.iwa.stolencar.rest.vo;
+
+public class AutoVO {
+
+	private Integer id;
+	private String mark;
+	private Long km;
+	private String modelo;
+	private String year;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getMark() {
+		return mark;
+	}
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
+}

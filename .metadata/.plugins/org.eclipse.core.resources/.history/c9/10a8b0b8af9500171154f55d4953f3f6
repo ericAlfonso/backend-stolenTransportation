@@ -1,0 +1,11 @@
+package com.iwa.stolencar.commos;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.persistence.entities.Año;
+
+public interface EstadisticasService {
+
+	List<AñoDTO> getYearStadistics(String transportName);
+}

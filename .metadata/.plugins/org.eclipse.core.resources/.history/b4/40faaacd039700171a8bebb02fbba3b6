@@ -1,0 +1,42 @@
+package com.iwa.stolencar.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.CardService;
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.DiaDTO;
+import com.iwa.stolencar.commos.dto.EstadisticaDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.persistence.AñoDAO;
+import com.iwa.stolencar.persistence.DiaDAO;
+import com.iwa.stolencar.persistence.EstadisticaDAO;
+import com.iwa.stolencar.persistence.MesDAO;
+import com.iwa.stolencar.persistence.entities.Año;
+import com.iwa.stolencar.persistence.entities.Dia;
+import com.iwa.stolencar.persistence.entities.Estadistica;
+import com.iwa.stolencar.persistence.entities.Mes;
+
+@Service
+@Transactional
+public class CardServiceImpl implements CardService {
+
+	private static final Logger logger = Logger.getLogger(CardService.class);
+
+	@Autowired
+	private AñoDAO añoDAO;
+	@Autowired
+	private MesDAO mesDAO;
+	@Autowired
+	private DiaDAO diaDAO;
+	@Autowired
+	private EstadisticaDAO estadisticaDAO;
+
+	
+}

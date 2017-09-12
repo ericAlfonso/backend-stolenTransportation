@@ -1,0 +1,52 @@
+package com.iwa.stolencar.services;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.CardService;
+import com.iwa.stolencar.commos.dto.CardDTO;
+import com.iwa.stolencar.persistence.AutoDAO;
+import com.iwa.stolencar.persistence.MotoDAO;
+import com.iwa.stolencar.persistence.entities.Auto;
+import com.iwa.stolencar.persistence.entities.Moto;
+
+@Service
+@Transactional
+public class CardServiceImpl implements CardService {
+
+	private static final Logger logger = Logger.getLogger(CardService.class);
+
+	@Autowired
+	private AutoDAO autoDAO;
+	@Autowired
+	private MotoDAO motoDAO;
+	
+	
+	@Override
+	public void updateTransportationCard(Integer id, CardDTO cardDTO) {
+		logger.info("SERVICE: updateTransportationCard method");
+		
+		if(logger.isDebugEnabled())
+			logger.debug("- Card id : " + id);
+		
+		if(logger.isTraceEnabled())
+			logger.trace("CardDTO received: " + cardDTO);
+		
+		if(cardDTO.getTitle().equals("cars")){
+			Auto auto = this.autoDAO.getById(id);
+			auto.setMark(cardDTO.getMark());
+			this.autoDAO.update(auto);
+		}
+		
+		if(cardDTO.getTitle().equals("motorcycles")){
+			Moto moto = this.motoDAO.getById(id);
+			moto.setMark(cardDTO.getMark());
+			this.motoDAO.update(moto);
+		}
+		
+	}
+
+	
+}

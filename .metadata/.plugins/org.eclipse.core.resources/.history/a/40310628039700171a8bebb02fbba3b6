@@ -1,0 +1,13 @@
+package com.iwa.stolencar.rest.parser;
+
+import java.util.List;
+
+import com.iwa.stolencar.commos.dto.AutoDTO;
+import com.iwa.stolencar.commos.dto.CardDTO;
+import com.iwa.stolencar.rest.vo.AutoVO;
+import com.iwa.stolencar.rest.vo.CardVO;
+
+public interface CardParser {
+
+	CardDTO parseToCardDTO(CardVO cardVO);
+}

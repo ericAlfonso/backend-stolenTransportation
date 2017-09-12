@@ -1,0 +1,10 @@
+package com.iwa.stolencar.persistence;
+
+import java.util.List;
+
+import com.iwa.stolencar.persistence.entities.Año;
+
+public interface AñoDAO extends InterfaceDAO<Año>{
+
+	List<Año> getYearStatistics(Integer from, Integer to);
+}

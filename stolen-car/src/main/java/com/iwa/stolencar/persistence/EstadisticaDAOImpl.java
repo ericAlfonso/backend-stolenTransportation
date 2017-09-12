@@ -1,0 +1,10 @@
+package com.iwa.stolencar.persistence;
+
+import org.springframework.stereotype.Repository;
+
+import com.iwa.stolencar.persistence.entities.Estadistica;
+
+@Repository
+public class EstadisticaDAOImpl extends AbstractDAO<Estadistica> implements EstadisticaDAO{
+
+}

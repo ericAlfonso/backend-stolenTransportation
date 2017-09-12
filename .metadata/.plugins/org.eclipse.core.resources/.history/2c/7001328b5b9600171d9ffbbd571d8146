@@ -1,0 +1,9 @@
+package com.iwa.stolencar.commos.dto;
+
+import javax.persistence.Column;
+
+public class EstadisticaDTO {
+
+	private Integer id;
+	private String name;
+}

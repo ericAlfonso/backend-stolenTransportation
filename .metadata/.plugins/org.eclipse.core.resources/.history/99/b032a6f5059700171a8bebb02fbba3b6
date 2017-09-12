@@ -1,0 +1,8 @@
+package com.iwa.stolencar.commos;
+
+import com.iwa.stolencar.commos.dto.CardDTO;
+
+public interface CardService {
+
+	void updateTransportationCard(Integer id, CardDTO cardDTO);
+}

@@ -1,0 +1,11 @@
+package com.iwa.stolencar.persistence;
+
+import org.springframework.stereotype.Repository;
+
+import com.iwa.stolencar.persistence.entities.Año;
+import com.iwa.stolencar.persistence.entities.Dia;
+
+@Repository
+public class DiaDAOImpl extends AbstractDAO<Dia> implements DiaDAO{
+
+}

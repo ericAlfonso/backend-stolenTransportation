@@ -1,0 +1,8 @@
+package com.iwa.stolencar.persistence;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class MotoDAOImpl extends AbstractDAO<Moto> implements MotoDAO{
+
+}

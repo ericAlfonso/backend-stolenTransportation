@@ -1,0 +1,6 @@
+package com.iwa.stolencar.persistence;
+
+import com.iwa.stolencar.persistence.entities.Moto;
+
+public interface MotoDAO extends InterfaceDAO<Moto>{
+}

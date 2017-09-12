@@ -1,0 +1,65 @@
+package com.iwa.stolencar.persistence.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "AUTO")
+public class Auto {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Integer id;
+	@Column(name = "MARK", nullable = false)
+	private String mark;
+	@Column(name = "KM", nullable = false)
+	private Long km;
+	@Column(name = "MODELO", nullable = false)
+	private String modelo;
+	@Column(name = "YEAR", nullable = false)
+	private String year;
+	@Column(name = "IMAGE", nullable = false)
+	private String image;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getMark() {
+		return mark;
+	}
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
+	public Long getKm() {
+		return km;
+	}
+	public void setKm(Long km) {
+		this.km = km;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+}

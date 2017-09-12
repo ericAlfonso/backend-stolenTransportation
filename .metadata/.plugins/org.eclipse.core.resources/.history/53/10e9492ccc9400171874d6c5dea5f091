@@ -1,0 +1,42 @@
+package com.iwa.stolencar.rest.parser.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.rest.parser.EstadisticasParser;
+import com.iwa.stolencar.rest.vo.AñoVO;
+import com.iwa.stolencar.rest.vo.MesVO;
+
+@Component
+public class EstadisticasParserImpl implements EstadisticasParser{
+
+	@Override
+	public List<AñoVO> parseToAñoVOList(List<AñoDTO> añoDTOs) {
+		List<AñoVO> añoVOs = new ArrayList<>();
+		if(añoDTOs == null)
+			return añoVOs;
+	}
+
+	@Override
+	public AñoVO parserToAñoVO(AñoDTO añoDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MesVO> parseToMesDTOList(List<MesDTO> mesDTOs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MesVO parseToMesVO(MesVO mesVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

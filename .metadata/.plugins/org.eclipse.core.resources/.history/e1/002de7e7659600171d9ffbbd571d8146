@@ -1,0 +1,90 @@
+package com.iwa.stolencar.rest;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iwa.stolencar.commos.EstadisticasService;
+import com.iwa.stolencar.commos.dto.AñoDTO;
+import com.iwa.stolencar.commos.dto.EstadisticaDTO;
+import com.iwa.stolencar.commos.dto.MesDTO;
+import com.iwa.stolencar.rest.parser.EstadisticasParser;
+import com.iwa.stolencar.rest.vo.AñoVO;
+import com.iwa.stolencar.rest.vo.EstadisticaVO;
+import com.iwa.stolencar.rest.vo.MesVO;
+
+@RestController
+@RequestMapping("/statistics")
+@SuppressWarnings("rawtypes")
+public class EstadisticasCtrlImpl implements EstadisticasCtrl {
+
+	private static final Logger logger = Logger.getLogger(EstadisticasCtrl.class);
+
+	@Autowired
+	private EstadisticasService estadisticasService;
+	@Autowired
+	private EstadisticasParser estadisticasParser;
+
+	@Override
+	@GetMapping
+	@RequestMapping("/{statisticId}/year")
+	public ResponseEntity getYearStatistics(@PathVariable(name = "statisticId") Integer stadisticId,
+			@RequestParam(name = "transportName") String transportName) {
+		logger.info("CTRL: getYearStadistics method");
+
+		List<AñoDTO> añoDTOs = 
+				this.estadisticasService.getYearStatistics(transportName);
+		List<AñoVO> añoVOs = 
+				this.estadisticasParser.parseToAñoVOList(añoDTOs);
+
+		if (logger.isTraceEnabled())
+			logger.trace("Year statistics: " + añoVOs);
+
+		return new ResponseEntity<>(añoVOs, HttpStatus.OK);
+	}
+
+	@Override
+	@GetMapping
+	@RequestMapping("/{statisticId}/month")
+	public ResponseEntity getMonthStatistics(@PathVariable(name = "statisticId") Integer stadisticId,
+			@RequestParam(name = "transportName") String transportName) {
+		logger.info("CTRL: getMonthStadistics method");
+
+		List<MesDTO> mesDTOs = 
+				this.estadisticasService.getMonthStatistics(transportName);
+		List<MesVO> mesVOs = 
+				this.estadisticasParser.parseToMesDTOList(mesDTOs);
+
+		if (logger.isTraceEnabled())
+			logger.trace("Month stadistics: " + mesVOs);
+
+		return new ResponseEntity<>(mesVOs, HttpStatus.OK);
+	}
+
+	@Override
+	@GetMapping
+	public ResponseEntity getStatistics() {
+		logger.info("CTRL: getStadistics method");
+		
+		List<EstadisticaDTO> estadisticaDTOs = 
+				this.estadisticasService.getStatistics();
+		
+		List<EstadisticaVO> estadisticaVOs = 
+				this.estadisticasParser.parseToEstadisticaVOList(estadisticaDTOs);
+		
+		if (logger.isTraceEnabled())
+			logger.trace("Stadistics: " + estadisticaVOs);
+		
+		return new ResponseEntity<>(estadisticaVOs, HttpStatus.OK);
+	}
+	
+	
+}

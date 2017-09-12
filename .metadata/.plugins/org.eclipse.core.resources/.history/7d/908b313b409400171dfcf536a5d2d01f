@@ -1,0 +1,10 @@
+package com.iwa.stolencar.commos;
+
+import java.util.List;
+
+import com.iwa.stolencar.persistence.entities.Auto;
+
+public interface AutoService {
+
+	List<Auto> getAllAutos();
+}

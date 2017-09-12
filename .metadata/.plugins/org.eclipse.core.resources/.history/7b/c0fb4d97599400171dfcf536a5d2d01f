@@ -1,0 +1,12 @@
+package com.iwa.stolencar.services;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.MotoService;
+
+@Service
+@Transactional
+public class MotoServiceImpl implements MotoService{
+
+}

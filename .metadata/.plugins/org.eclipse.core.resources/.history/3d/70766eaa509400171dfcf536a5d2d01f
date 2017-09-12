@@ -1,0 +1,12 @@
+package com.iwa.stolencar.rest.vo;
+
+public class MotoVO {
+
+	private Integer id;
+	private String mark;
+	private Long km;
+	private String modelo;
+	private String year;
+	
+	
+}

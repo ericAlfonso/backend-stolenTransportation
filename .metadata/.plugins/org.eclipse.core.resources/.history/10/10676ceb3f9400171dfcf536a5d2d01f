@@ -1,0 +1,27 @@
+package com.iwa.stolencar.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.iwa.stolencar.commos.AutoService;
+import com.iwa.stolencar.persistence.AutoDAO;
+import com.iwa.stolencar.persistence.entities.Auto;
+
+@Service
+@Transactional
+public class AutoServiceImpl implements AutoService{
+	
+	@Autowired private AutoDAO autoDAO;
+
+	@Override
+	public List<Auto> getAllAutos() {
+		
+		List<Auto> autos = this.autoDAO.getAll();
+		
+		return null;
+	}
+
+}
