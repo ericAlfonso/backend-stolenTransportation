@@ -1,0 +1,12 @@
+*.project
+*.classpath
+**/.settings/
+**/nbproject/
+**/nb-configuration.xml
+**/nbactions.xml
+**/target/
+**/MANIFEST.MF
+**/logs
+*.log
+**/.metadata/
+**/.recommenders/
