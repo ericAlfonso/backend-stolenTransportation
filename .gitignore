@@ -10,4 +10,4 @@
 *.log
 **/.metadata/
 **/.recommenders/
-.metadata/*
+../.metadata
